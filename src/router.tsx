@@ -5,6 +5,9 @@ import GuestUpload from "./guestPanel/upload";
 import Dashboard from "./adminPanel";
 import CreateEvent from "./adminPanel/create-event";
 import AdminDashboard from "./adminPanel/overview";
+import SendLinkToGuests from "./adminPanel/shareLinkToEmail";
+import EventsList from "./adminPanel/event/eventList";
+import EventDetails from "./adminPanel/event/eventDetails";
 
 export const routes =  createHashRouter([
     {
@@ -30,6 +33,18 @@ export const routes =  createHashRouter([
             {
                 path: '/hostPanel/create-event',
                 element: <CreateEvent/>
+            },
+            {
+                path: '/hostPanel/share-link',
+                element: <SendLinkToGuests/>
+            },
+            {
+                path: '/hostPanel/events',
+                element: <EventsList/>
+            },
+            {
+                path: '/hostPanel/events/:id',
+                element: <EventDetails/>
             },
         ]
     },

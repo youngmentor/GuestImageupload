@@ -22,3 +22,7 @@ export const uploadPictures = async (data: any) => {
         }
     })
 }
+
+export const sendInviteLink = async ({ emails, guestLink }: { emails: string[]; guestLink: string }) => {
+    return await axios.post(`${url}/create-event`, {emails, guestLink})
+}
