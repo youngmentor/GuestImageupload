@@ -29,17 +29,34 @@ const AdminDashboard: React.FC = () => {
             alert("Error: QR Code not rendered yet. Please try again.");
         }
     };
-
+    const handleCopyLink = () => {
+        navigator.clipboard.writeText(guestLink)
+            .then(() => {
+                alert('Link copied to clipboard!');
+            })
+            .catch((err) => {
+                console.error('Failed to copy: ', err);
+                alert('Failed to copy the link. Please try again.');
+            });
+    };
     return (
         <div className="p-4 flex flex-col items-center">
             <canvas ref={qrRef} />
             <p className="mt-2">Share this QR code with guests or download it for printing.</p>
-            <button 
-                onClick={handleDownload} 
-                className="mt-4 p-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-            >
-                Download QR Code
-            </button>
+            <span className='flex gap-2 items-center justify-center'>
+                <button
+                    onClick={handleDownload}
+                    className="mt-4 p-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                >
+                    Download QR Code
+                </button>
+                <button
+                    onClick={handleCopyLink}
+                    className=" mt-4 p-2 bg-green-500 text-white rounded hover:bg-green-600"
+                >
+                    Copy Link
+                </button>
+            </span>
         </div>
     );
 };
